@@ -10,13 +10,13 @@ services:
       context: ./reverse-proxy
     volumes:
         - ./reverse-proxy/conf/includes:/etc/nginx/includes
-        - ./reverse-proxy/html:/etc/static
+        - ./reverse-proxy/html:/etc/static/public
     depends_on:
         - frontend
     extra_hosts:
         - host.docker.internal:host-gateway
   frontend:
-    image: microlc/micro-lc:latest
+    image: microlc/micro-lc:${MICRO_LC_VERSION:-latest}
     hostname: fe-container
     networks:
         - ring
@@ -24,7 +24,7 @@ services:
     hostname: composer
     networks:
       - ring
-    image: microlc/micro-lc-element-composer:latest
+    image: microlc/micro-lc-element-composer:${ELEMENT_COMPOSER_VERSION:-latest}
     environment:
       - HTTP_PORT=8080
   back-kit:
@@ -38,7 +38,7 @@ services:
     hostname: notification-center
     networks:
       - ring
-    image: microlc/micro-lc-notification-center:2.0.0-rc1
+    image: microlc/micro-lc-notification-center:${NOTIFICATION_CENTER_VERSION:-latest}
     environment:
       - HTTP_PORT=8080
 

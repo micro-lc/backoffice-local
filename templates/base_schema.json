@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "_id": { "type": "string" },
+    "creatorId": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "updaterId": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "__STATE__": {
+      "type": "string",
+      "enum": [
+        "PUBLIC",
+        "DRAFT",
+        "TRASH"
+      ]
+    }
+  },
+  "required": [
+    "_id", "creatorId", "createdAt", "updaterId", "updatedAt", "__STATE__"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "theming": {
+    "header": {
+      "pageTitle": "Backoffice Local",
+      "favicon": "https://www.mia-platform.eu/static/img/favicon/apple-icon-60x60.png"
+    },
+    "logo": {
+      "alt": "Logo",
+      "url_light_image": "/public/logo.png"
+    },
+    "variables": {
+      "primaryColor": "#fa8b3e"
+    },
+    "menuLocation": "fixedSideBar"
+  },
+  "rightMenu": [],
+  "plugins": [],
+  "internalPlugins": []
+}

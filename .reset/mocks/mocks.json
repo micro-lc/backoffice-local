@@ -1,0 +1,6 @@
+[
+  {
+    "id": "base",
+    "routesVariants": ["base-config:ok", "plugins:ok", "userinfo:test"]
+  }
+]

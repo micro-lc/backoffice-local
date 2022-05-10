@@ -1,3 +1,42 @@
 {
-  "packageManager": "yarn@3.2.0"
+  "name": "backoffice-local",
+  "license": "SEE LICENSE IN LICENSE",
+  "packageManager": "yarn@3.2.0",
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts",
+    "env:start": "docker-compose up -d --build",
+    "env:stop": "docker-compose down",
+    "server:start": "node ./server.js",
+    "start": "run-s env:start server:start"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@mocks-server/core": "^2.5.3",
+    "@mocks-server/plugin-admin-api": "^2.2.1",
+    "@mocks-server/plugin-inquirer-cli": "^2.2.1",
+    "@types/figlet": "^1.5.4",
+    "@types/inquirer": "^8.2.1",
+    "@types/node": "^17.0.31",
+    "@types/shelljs": "^0.8.11",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "ajv": "^8.11.0",
+    "backoffice-local-cli": "file:../backoffice-local-cli",
+    "chalk": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "fast-json-patch": "^3.1.1",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.4",
+    "jsonpath-plus": "^6.0.1",
+    "npm-run-all": "^4.1.5",
+    "sift": "^16.0.0",
+    "strip-json-comments": "^4.0.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  },
+  "engine": {
+    "node": ">=16.0.0"
+  }
 }

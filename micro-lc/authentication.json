@@ -1,0 +1,5 @@
+{
+  "isAuthNecessary": true,
+  "userInfoUrl": "/userinfo",
+  "userLogoutUrl": "/logout"
+}
