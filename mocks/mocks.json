@@ -1,6 +1,34 @@
 [
   {
     "id": "base",
-    "routesVariants": ["base-config:ok", "plugins:ok", "userinfo:test"]
+    "routesVariants": [
+      "base-config:ok",
+      "plugins:ok",
+      "userinfo:test",
+      "riders-get:ok",
+      "riders-get-by-id:ok",
+      "riders-add-new:ok",
+      "riders-stream:ok",
+      "riders-get:ko",
+      "riders-get-by-id:ko",
+      "riders-add-new:ko",
+      "riders-stream:ko",
+      "cities-get:ok",
+      "cities-get-by-id:ok",
+      "cities-add-new:ok",
+      "cities-stream:ok",
+      "cities-get:ko",
+      "cities-get-by-id:ko",
+      "cities-add-new:ko",
+      "cities-stream:ko",
+      "customers-get:ok",
+      "customers-get-by-id:ok",
+      "customers-add-new:ok",
+      "customers-stream:ok",
+      "customers-get:ko",
+      "customers-get-by-id:ko",
+      "customers-add-new:ko",
+      "customers-stream:ko"
+    ]
   }
 ]

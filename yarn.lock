@@ -827,7 +827,7 @@ __metadata:
 
 "backoffice-local-cli@file:../backoffice-local-cli::locator=backoffice-local%40workspace%3A.":
   version: 0.0.1
-  resolution: "backoffice-local-cli@file:../backoffice-local-cli#../backoffice-local-cli::hash=165ceb&locator=backoffice-local%40workspace%3A."
+  resolution: "backoffice-local-cli@file:../backoffice-local-cli#../backoffice-local-cli::hash=d20bb5&locator=backoffice-local%40workspace%3A."
   dependencies:
     ajv: ^8.11.0
     chalk: ^5.0.1
@@ -840,7 +840,7 @@ __metadata:
     strip-json-comments: ^4.0.0
   bin:
     mgmt: ./dist/index.js
-  checksum: 2d53be67af899e027d7e694013c204583ab2791da6643354e5398b8dbad45d3e6b0dcfb2f4622efcde4a7525697797442075727b876589af0982a42bed1da828
+  checksum: c8ad72188b7a8e8832b88d82b8bf9198a5b6ecfa571c84a2b5b18628d1892d6efef4551c2c379512e176a4b19273554e17f13f8f9e40c6fec8cc9c527482344d
   languageName: node
   linkType: hard
 
@@ -861,6 +861,7 @@ __metadata:
     ajv: ^8.11.0
     backoffice-local-cli: "file:../backoffice-local-cli"
     chalk: ^5.0.1
+    cities.json: ^1.1.5
     dotenv: ^16.0.0
     eslint: ^8.15.0
     eslint-plugin-node: ^11.1.0
@@ -1100,6 +1101,13 @@ __metadata:
   version: 0.0.2
   resolution: "charenc@npm:0.0.2"
   checksum: 81dcadbe57e861d527faf6dd3855dc857395a1c4d6781f4847288ab23cffb7b3ee80d57c15bba7252ffe3e5e8019db767757ee7975663ad2ca0939bb8fcaf2e5
+  languageName: node
+  linkType: hard
+
+"cities.json@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "cities.json@npm:1.1.5"
+  checksum: ef430b6f5837a9126d714febb0f69fcad4059bffa85ad280ef22baf80ccefa02e148544069fdedfd194f7993be99823e3a01cc117538c6811f3645020f21f6db
   languageName: node
   linkType: hard
 

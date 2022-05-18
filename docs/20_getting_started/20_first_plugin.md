@@ -11,14 +11,19 @@ First of all we must mock some data. To make it as quick as possible we employ a
 yarn mgmt
 ```
 
-and select `Add new CRUD`. Choose the name `riders` and confirm we'd like to use an already provided schema.
+and select `Add new CRUD`. 
+
+Choose the name `riders` and confirm we'd like to use an already provided schema.
+
 Choose `file` (on next iterations you might feel ok editing 
 the default schema via an editor as `vim`) and pick the default `templates/base_schema.json` schema.
 
 You should be ok confirming the next steps and thus confirm the creation of the new CRUD.
 
-You should have created 1 file: `<repository-root-dir>/mocks/cruds/riders.js` and now let's edit it. Open it with your
-favorite editor and notice it declares a JS Class which is constructed with a mock function. Let's add some 
+You should have created 1 file: `<repository-root-dir>/mocks/cruds/riders.js` and now 
+let's edit it. Open it with your
+favorite editor and notice it declares a 
+JS Class which is constructed with a mock function. Let's add some 
 fields in it.
 
 ```javascript
@@ -90,14 +95,14 @@ the following json code:
   ...,
   "plugins": [
     {
-      "id": "ordersList",
-      "label": "Orders",
+      "id": "riders",
+      "label": "Riders",
       "icon": "fas fa-biking",
       "integrationMode": "qiankun",
-      "pluginRoute": "/bo-riders-list",
+      "pluginRoute": "/bo-riders",
       "pluginUrl": "/element-composer/",
       "props": {
-        "configurationName": "riders-list"
+        "configurationName": "riders"
       }
     }
   ],
@@ -107,14 +112,14 @@ the following json code:
 
 which instructs `micro-lc` to show a new item in the left-side menu which will have
 
-- url: `/bo-riders-list`
+- url: `/bo-riders`
 - plugins: `element-composer`
-- element-composer config: `riders-list.json`
+- element-composer config: `riders.json`
 
-let's then add a file named `riders-list.json` in `./mocks` with a basic layout
+let's then add a file named `riders.json` in `./mocks` with a basic layout
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 {
   "$ref": {},
@@ -162,7 +167,7 @@ You could checkout the [`bk-crud-client` documentation](https://docs.mia-platfor
 the `orders-list.json` config
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 {
   "$ref": {},
@@ -210,7 +215,7 @@ other components in the page.
 Let's add a table using the [`bk-table` component](https://docs.mia-platform.eu/docs/business_suite/backoffice/Components/data_visualization#table)
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 {
   "$ref": {},
@@ -278,7 +283,7 @@ and let's add it to the `orders-list.json` plugin within a `$ref`
 key which can be referenced from various part of the json config
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 
 {
@@ -304,6 +309,8 @@ key which can be referenced from various part of the json config
   }
 }
 ```
+
+and also to the `bk-crud-client`.
 
 Now the table knows what we would like to show (we excluded for
 instance the `createdAt` field) and how to render a type-dependent
@@ -333,7 +340,7 @@ component handles the JS injection of
 global style, hence update your config as follows:
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 
 {
@@ -363,7 +370,7 @@ To do that we can use some inline css.
 Let's design some page layout
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 {
   "$ref": {...},
@@ -393,7 +400,7 @@ We could start with the main section, remove the `bk-table`
 from its current location and nest it as follows:
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 ...
 { // MAIN
@@ -460,7 +467,7 @@ the effect in place.
 Let's move to the footer
 
 ```json
-// micro-lc/riders-list.json
+// micro-lc/riders.json
 
 ...
 { // FOOTER

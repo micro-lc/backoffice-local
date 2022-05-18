@@ -23,6 +23,7 @@
     "ajv": "^8.11.0",
     "backoffice-local-cli": "file:../backoffice-local-cli",
     "chalk": "^5.0.1",
+    "cities.json": "^1.1.5",
     "dotenv": "^16.0.0",
     "eslint": "^8.15.0",
     "eslint-plugin-node": "^11.1.0",

@@ -1,0 +1,229 @@
+{
+  "$ref": {
+    "dataSchema": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "visualizationOptions": {
+            "hidden": true
+          },
+          "formOptions": {
+            "hidden": true
+          }
+        },
+        "firstName": {
+          "label": {
+            "en": "First Name",
+            "de": "Vorname",
+            "it": "Nome",
+            "zh": "名"
+          },
+          "type": "string"
+        },
+        "lastName": {
+          "label": {
+            "en": "Last Name",
+            "de": "Familienname",
+            "it": "Cognome",
+            "zh": "姓"
+          },
+          "type": "string"
+        },
+        "cityOfBirth": {
+          "type": "string",
+          "format": "lookup",
+          "label": {
+            "en": "City Of Birth",
+            "it": "Luogo di Nascita"
+          },
+          "lookupOptions": {
+            "lookupDataSource": "cities",
+            "lookupValue": "_id",
+            "lookupFields": ["name"]
+          }
+        },
+        "address": {
+          "type": "string",
+          "label": {
+            "en": "Address",
+            "it": "Indirizzo"
+          }
+        },
+        "activeOrders": {
+          "type": "number",
+          "label": {
+            "en": "Active Orders",
+            "it": "Ordini Attivi"
+          }
+        },
+        "pastOrders": {
+          "label": {
+            "en": "Past Orders",
+            "it": "Ordini Passati"
+          }
+        }
+      }
+    }
+  },
+  "content": {
+    "type": "row",
+    "attributes": {
+      "style": "min-height: 100%;"
+    },
+    "content": [
+      {
+        "type": "element",
+        "tag": "bk-microlc-theme-manager",
+        "url": "/back-kit/{{BACK_KIT_VERSION}}/bk-web-components.esm.js"
+      },
+      {
+        "type": "column",
+        "attributes": {
+          "style": "justify-content: space-between; padding: 10px 40px; border-bottom: 1px solid #ccc;"
+        },
+        "content": [
+          {
+            "type": "column",
+            "attributes": {
+              "style": "align-items: center;"
+            },
+            "content": [
+              {
+                "type": "element",
+                "tag": "bk-title",
+                "attributes": {
+                  "style": "margin-right: 20px;"
+                },
+                "properties": {
+                  "content": {
+                    "en": "Customers",
+                    "it": "Clienti"
+                  }
+                }
+              },
+              {
+                "type": "element",
+                "tag": "bk-refresh-button"
+              }
+            ]
+          },
+          {
+            "type": "element",
+            "tag": "bk-add-new-button"
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "attributes": {
+          "style": "background-color: #f0f2f5; padding: 2em 4em; flex-grow: 1"
+        },
+        "content": [
+          {
+            "type": "element",
+            "tag": "bk-table",
+            "properties": {
+              "dataSchema": {
+                "$ref": "dataSchema"
+              },
+              "disableRowClick": true,
+              "maxLines": 10,
+              "rowActions": {
+                "kind": "icons",
+                "actions": [
+                  {
+                    "kind": "event",
+                    "content": "selected-data",
+                    "label": {
+                      "en": "Edit data",
+                      "it": "Aggiorna dati",
+                      "de": "Daten bearbeiten",
+                      "zh": "編輯數據"
+                    },
+                    "icon": "fas fa-pen"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "element",
+            "tag": "bk-form-modal",
+            "properties": {
+              "dataSchema": {
+                "$ref": "dataSchema"
+              },
+              "customLabels": {
+                "create": {
+                  "title": {
+                    "en": "Add new",
+                    "it": "Aggiungi nuovo",
+                    "de": "Neue hinzufügen",
+                    "zh": "添新"
+                  },
+                  "ctaLabel": {
+                    "en": "Add",
+                    "it": "Aggiungi",
+                    "de": "Hinzufügen",
+                    "zh": "添新"
+                  }
+                },
+                "update": {
+                  "title": "Order detail",
+                  "ctaLabel": {
+                    "en": "Save",
+                    "it": "Salva",
+                    "zh": "保持",
+                    "de": "Speichern"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "column",
+        "attributes": {
+          "style": "position: sticky; justify-content: space-between; align-items: center; padding: 0.5em 4em; background-color: white; z-index: 10; bottom: 0; max-height: 5em; border-top: 1px solid #ccc; border-left: 1px solid #ccc;"
+        },
+        "content": [
+          {
+            "type": "element",
+            "tag": "bk-footer"
+          },
+          {
+            "type": "element",
+            "tag": "bk-pagination",
+            "properties": {
+              "pageSizeOptions": [5, 10, 25],
+              "pageSize": 10
+            }
+          }
+        ]
+      },
+      {
+        "type": "element",
+        "tag": "bk-crud-client",
+        "properties": {
+          "basePath": "/v2/customers",
+          "dataSchema": {
+            "$ref": "dataSchema"
+          }
+        }
+      },
+      {
+        "type": "element",
+        "tag": "bk-crud-lookup-client",
+        "properties": {
+          "basePath": "/v2",
+          "allowLiveSearchCache": true,
+          "dataSchema": {
+            "$ref": "dataSchema"
+          }
+        }
+      }
+    ]
+  }
+}
