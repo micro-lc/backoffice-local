@@ -10,6 +10,22 @@
           },
           "formOptions": {
             "hidden": true
+          },
+          "filtersOptions": {
+            "hidden": true
+          }
+        },
+        "__STATE__": {
+          "type": "string",
+          "enum": ["PUBLIC", "DRAFT", "TRASH"],
+          "visualizationOptions": {
+            "hidden": true
+          },
+          "filtersOptions": {
+            "hidden": true
+          },
+          "formOptions": {
+            "hidden": true
           }
         },
         "firstName": {
@@ -37,6 +53,7 @@
             "en": "City Of Birth",
             "it": "Luogo di Nascita"
           },
+          "excludeFromSearch": false,
           "lookupOptions": {
             "lookupDataSource": "cities",
             "lookupValue": "_id",
@@ -58,6 +75,7 @@
           }
         },
         "pastOrders": {
+          "type": "number",
           "label": {
             "en": "Past Orders",
             "it": "Ordini Passati"
@@ -78,39 +96,118 @@
         "url": "/back-kit/{{BACK_KIT_VERSION}}/bk-web-components.esm.js"
       },
       {
-        "type": "column",
+        "type": "row",
         "attributes": {
-          "style": "justify-content: space-between; padding: 10px 40px; border-bottom: 1px solid #ccc;"
+          "style": "justify-content: space-between; border-bottom: 1px solid #ccc;"
         },
         "content": [
           {
             "type": "column",
             "attributes": {
-              "style": "align-items: center;"
+              "style": "justify-content: space-between; padding: 10px 40px;"
             },
             "content": [
               {
-                "type": "element",
-                "tag": "bk-title",
+                "type": "column",
                 "attributes": {
-                  "style": "margin-right: 20px;"
+                  "style": "align-items: center;"
                 },
+                "content": [
+                  {
+                    "type": "element",
+                    "tag": "bk-title",
+                    "attributes": {
+                      "style": "margin-right: 20px;"
+                    },
+                    "properties": {
+                      "content": {
+                        "en": "Customers",
+                        "it": "Clienti"
+                      }
+                    }
+                  },
+                  {
+                    "type": "element",
+                    "tag": "bk-refresh-button"
+                  }
+                ]
+              },
+              {
+                "type": "element",
+                "tag": "bk-search-bar",
                 "properties": {
-                  "content": {
-                    "en": "Customers",
-                    "it": "Clienti"
+                  "searchLookups": true,
+                  "placeholder": {
+                    "en": "Search...",
+                    "it": "Cerca..."
                   }
                 }
               },
               {
-                "type": "element",
-                "tag": "bk-refresh-button"
+                "type": "column",
+                "content": [
+                  {
+                    "type": "element",
+                    "tag": "bk-add-filter-button",
+                    "attributes": {
+                      "style": "margin-right: 20px;"
+                    }
+                  },
+                  {
+                    "type": "element",
+                    "tag": "bk-add-new-button"
+                  }
+                ]
               }
             ]
           },
           {
-            "type": "element",
-            "tag": "bk-add-new-button"
+            "type": "column",
+            "attributes": {
+              "style": "justify-content: space-between; align-items: center; margin-left: 25px; margin-right: 25px;"
+            },
+            "content": [
+              {
+                "type": "element",
+                "tag": "bk-tabs",
+                "properties": {
+                  "tabs": [
+                    {
+                      "key": "public",
+                      "title": {
+                        "en": "Public",
+                        "it": "Pubblici"
+                      },
+                      "filters": [
+                        {
+                          "property": "__STATE__",
+                          "operator": "equal",
+                          "value": "PUBLIC"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "draft-trash",
+                      "title": {
+                        "en": "Drafted or Trashed",
+                        "it": "Draft o Eliminati"
+                      },
+                      "filters": [
+                        {
+                          "property": "__STATE__",
+                          "operator": "includeSome",
+                          "value": ["DRAFT", "TRASH"]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "element",
+                "tag": "bk-filters-manager"
+              }
+            ]
           }
         ]
       },
@@ -178,6 +275,15 @@
                     "de": "Speichern"
                   }
                 }
+              }
+            }
+          },
+          {
+            "type": "element",
+            "tag": "bk-filter-drawer",
+            "properties": {
+              "dataSchema": {
+                "$ref": "dataSchema"
               }
             }
           }

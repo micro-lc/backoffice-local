@@ -202,6 +202,7 @@ we could recover `_id`, `firstName`, `lastName` from `riders.json`
           }
         },
         "pastOrders": {
+          "type": "number",
           "label": {
             "en": "Past Orders",
             "it": "Ordini Passati"
