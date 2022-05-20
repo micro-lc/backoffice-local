@@ -14,29 +14,6 @@
     "menuLocation": "fixedSideBar"
   },
   "rightMenu": [],
-  "plugins": [
-    {
-      "id": "riders",
-      "label": "Riders",
-      "icon": "fas fa-biking",
-      "integrationMode": "qiankun",
-      "pluginRoute": "/bo-riders",
-      "pluginUrl": "/element-composer/",
-      "props": {
-        "configurationName": "riders"
-      }
-    },
-    {
-      "id": "customers",
-      "label": "Customers",
-      "icon": "fas fa-users",
-      "integrationMode": "qiankun",
-      "pluginRoute": "/bo-customers",
-      "pluginUrl": "/element-composer/",
-      "props": {
-        "configurationName": "customers"
-      }
-    }
-  ],
+  "plugins": [],
   "internalPlugins": []
 }
