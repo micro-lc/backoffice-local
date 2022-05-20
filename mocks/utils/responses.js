@@ -8,4 +8,11 @@ const serverError = (res) => {res.set({
   'Cache-Control': 'no-cache'
 }).status(500).send({status: 500, error: 'Internal Server Error'})}
 
-module.exports = {notFound, serverError}
+const badRequest = (res) => {
+  res.set({
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache'
+  }).status(400).send({status: 400, error: 'Bad Request'})
+}
+
+module.exports = {notFound, serverError, badRequest}

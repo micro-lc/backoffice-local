@@ -40,6 +40,36 @@ class Crud {
   
     return _id
   }
+
+  patch (id, $set = {}, $unset = {}) {
+    const i = this.items.findIndex(({_id}) => _id === id)
+    console.log(i)
+    if(i < 0) {
+      throw new TypeError('Not Found')
+    }
+
+    const el = this.items[i]
+    Object.entries($set).forEach(([k,v]) => {
+      el[k] = v
+    })
+    Object.entries($unset).forEach(([k,v]) => {
+      if(v) {
+        delete el[k]
+      }
+    })
+    this.items[i] = el
+
+    return el
+  }
+
+  delete (id) {
+    const i = this.items.findIndex(({_id}) => _id === id)
+    if(i < 0) {
+      throw new TypeError('Not Found')
+    }
+
+    this.items.splice(i, 1)
+  }
 }
 
 module.exports = Crud

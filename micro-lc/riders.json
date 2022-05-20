@@ -227,6 +227,7 @@
         "type": "element",
         "tag": "bk-crud-client",
         "properties": {
+          "enableDefinitiveDelete": true,
           "basePath": "/v2/riders",
           "dataSchema": {
             "$ref": "dataSchema"

@@ -314,6 +314,7 @@
         "tag": "bk-crud-client",
         "properties": {
           "basePath": "/v2/customers",
+          "enableDefinitiveDelete": true,
           "dataSchema": {
             "$ref": "dataSchema"
           }

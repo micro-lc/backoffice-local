@@ -827,7 +827,7 @@ __metadata:
 
 "backoffice-local-cli@file:../backoffice-local-cli::locator=backoffice-local%40workspace%3A.":
   version: 0.0.1
-  resolution: "backoffice-local-cli@file:../backoffice-local-cli#../backoffice-local-cli::hash=d20bb5&locator=backoffice-local%40workspace%3A."
+  resolution: "backoffice-local-cli@file:../backoffice-local-cli#../backoffice-local-cli::hash=c2c0f4&locator=backoffice-local%40workspace%3A."
   dependencies:
     ajv: ^8.11.0
     chalk: ^5.0.1
@@ -840,7 +840,7 @@ __metadata:
     strip-json-comments: ^4.0.0
   bin:
     mgmt: ./dist/index.js
-  checksum: c8ad72188b7a8e8832b88d82b8bf9198a5b6ecfa571c84a2b5b18628d1892d6efef4551c2c379512e176a4b19273554e17f13f8f9e40c6fec8cc9c527482344d
+  checksum: 61f0bff6aee02c82463f668836d1f5abd7d96a2ca6a41e16ef3c356be8a82ba69604e03302e1e0f342b0ba563ba69374acddc56f5013d9e1b6e318b93eff61cb
   languageName: node
   linkType: hard
 

@@ -1,5 +1,5 @@
 const chain = require('../utils/chain')
-const {serverError, notFound} = require('../utils/responses')
+const {serverError, notFound, badRequest} = require('../utils/responses')
 const {readdirSync} = require('fs')
 const {resolve} = require('path')
 
@@ -105,6 +105,70 @@ function genCrud (name, endpoint = name) {
             } else {
               serverError(response)
             }
+          }
+        },
+        variant500
+      ]
+    },
+    {
+      id: `${name}-edit`,
+      url: `/v2/${endpoint}/:id`,
+      method: 'PATCH',
+      variants: [
+        {
+          id: 'ok',
+          response: (request, response) => {
+            const {body, params} = request
+
+            if(!params || !params.id) {
+              badRequest(response)
+              return
+            }
+
+            if(!body.$set && !body.$unset) {
+              badRequest(response)
+              return
+            }
+
+            const {id} = params
+            const {$set, $unset} = body
+
+            try {
+              const patched = require(`../cruds/${name}`).patch(id, $set, $unset)
+              response.status(200)
+                .set({
+                  'Content-Type': 'application/json'
+                }).send(patched)
+            } catch {
+              notFound(response)
+            }
+          }
+        },
+        variant500
+      ]
+    },
+    {
+      id: `${name}-delete`,
+      url: `/v2/${endpoint}/:id`,
+      method: 'PATCH',
+      variants: [
+        {
+          id: 'ok',
+          response: (request, response) => {
+            const {params} = request
+
+            if(!params || !params.id) {
+              badRequest(response)
+              return
+            }
+            
+            try {
+              require(`../cruds/${name}`).delete(id)
+              response.status(204).send()
+            } catch {
+              notFound(response)
+            }
+
           }
         },
         variant500
