@@ -375,6 +375,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@micro-lc/backoffice-local-cli@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@micro-lc/backoffice-local-cli@npm:0.0.1"
+  dependencies:
+    ajv: ^8.11.0
+    chalk: ^5.0.1
+    commander: ^9.2.0
+    figlet: ^1.5.2
+    fs-extra: ^10.1.0
+    inquirer: ^8.2.4
+    mkdirp: ^1.0.4
+    prettier: ^2.6.2
+    strip-json-comments: ^4.0.0
+  bin:
+    mgmt: dist/index.js
+  checksum: 393901d292c672d7cecf5eb258efc9cd58155af11bef7e55348e4eae8cb6a70a91b27b839858d624c374928853cc8a6c63ac455120c286d2cd2a83e93ae714c9
+  languageName: node
+  linkType: hard
+
 "@mocks-server/admin-api-paths@npm:2.2.1":
   version: 2.2.1
   resolution: "@mocks-server/admin-api-paths@npm:2.2.1"
@@ -825,30 +844,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"backoffice-local-cli@file:../backoffice-local-cli::locator=backoffice-local%40workspace%3A.":
-  version: 0.0.1
-  resolution: "backoffice-local-cli@file:../backoffice-local-cli#../backoffice-local-cli::hash=c2c0f4&locator=backoffice-local%40workspace%3A."
-  dependencies:
-    ajv: ^8.11.0
-    chalk: ^5.0.1
-    commander: ^9.2.0
-    figlet: ^1.5.2
-    fs-extra: ^10.1.0
-    inquirer: ^8.2.4
-    mkdirp: ^1.0.4
-    prettier: ^2.6.2
-    strip-json-comments: ^4.0.0
-  bin:
-    mgmt: ./dist/index.js
-  checksum: 61f0bff6aee02c82463f668836d1f5abd7d96a2ca6a41e16ef3c356be8a82ba69604e03302e1e0f342b0ba563ba69374acddc56f5013d9e1b6e318b93eff61cb
-  languageName: node
-  linkType: hard
-
 "backoffice-local@workspace:.":
   version: 0.0.0-use.local
   resolution: "backoffice-local@workspace:."
   dependencies:
     "@babel/core": ^7.17.10
+    "@micro-lc/backoffice-local-cli": ^0.0.1
     "@mocks-server/core": ^2.5.3
     "@mocks-server/plugin-admin-api": ^2.2.1
     "@mocks-server/plugin-inquirer-cli": ^2.2.1
@@ -859,7 +860,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.23.0
     "@typescript-eslint/parser": ^5.23.0
     ajv: ^8.11.0
-    backoffice-local-cli: "file:../backoffice-local-cli"
     chalk: ^5.0.1
     cities.json: ^1.1.5
     dotenv: ^16.0.0

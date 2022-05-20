@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
+    "@micro-lc/backoffice-local-cli": "^0.0.1",
     "@mocks-server/core": "^2.5.3",
     "@mocks-server/plugin-admin-api": "^2.2.1",
     "@mocks-server/plugin-inquirer-cli": "^2.2.1",
@@ -21,7 +22,6 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "ajv": "^8.11.0",
-    "backoffice-local-cli": "file:../backoffice-local-cli",
     "chalk": "^5.0.1",
     "cities.json": "^1.1.5",
     "dotenv": "^16.0.0",
