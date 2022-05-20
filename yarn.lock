@@ -375,9 +375,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@micro-lc/backoffice-local-cli@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@micro-lc/backoffice-local-cli@npm:0.0.1"
+"@micro-lc/backoffice-local-cli@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@micro-lc/backoffice-local-cli@npm:0.1.0"
   dependencies:
     ajv: ^8.11.0
     chalk: ^5.0.1
@@ -390,7 +390,7 @@ __metadata:
     strip-json-comments: ^4.0.0
   bin:
     mgmt: dist/index.js
-  checksum: 393901d292c672d7cecf5eb258efc9cd58155af11bef7e55348e4eae8cb6a70a91b27b839858d624c374928853cc8a6c63ac455120c286d2cd2a83e93ae714c9
+  checksum: 63ab11bb3d10c99cdb345085b50aa04d8193c633c8d619cbc62f3ff4844983820f803766145b13e86bac1ecbea7fbe81623f7555a078eb517a668a4ec80a6b1d
   languageName: node
   linkType: hard
 
@@ -849,7 +849,7 @@ __metadata:
   resolution: "backoffice-local@workspace:."
   dependencies:
     "@babel/core": ^7.17.10
-    "@micro-lc/backoffice-local-cli": ^0.0.1
+    "@micro-lc/backoffice-local-cli": ^0.1.0
     "@mocks-server/core": ^2.5.3
     "@mocks-server/plugin-admin-api": ^2.2.1
     "@mocks-server/plugin-inquirer-cli": ^2.2.1
@@ -4161,7 +4161,7 @@ __metadata:
 
 "typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
   version: 4.6.4
-  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver

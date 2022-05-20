@@ -1,7 +1,7 @@
 {
   "name": "backoffice-local",
   "license": "SEE LICENSE IN LICENSE",
-  "packageManager": "yarn@3.2.0",
+  "packageManager": "yarn@3.2.1",
   "scripts": {
     "lint": "eslint . --ext .js,.ts",
     "env:start": "docker-compose up -d --build",
@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
-    "@micro-lc/backoffice-local-cli": "^0.0.1",
+    "@micro-lc/backoffice-local-cli": "^0.1.0",
     "@mocks-server/core": "^2.5.3",
     "@mocks-server/plugin-admin-api": "^2.2.1",
     "@mocks-server/plugin-inquirer-cli": "^2.2.1",
