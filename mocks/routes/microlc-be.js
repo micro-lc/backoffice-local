@@ -150,7 +150,7 @@ module.exports = [
             exp: 1641840144,
             groups,
             iat: 1641804144,
-            iss: 'http://localhost/',
+            iss: 'http://localhost:8080/',
             name: 'test@mia-platform.eu',
             nickname: 'test.user',
             picture: 'https://s.gravatar.com/avatar/ebfa271dd832b0061a9371421ef4de69?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fum.png',

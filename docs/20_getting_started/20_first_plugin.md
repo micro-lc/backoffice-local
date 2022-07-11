@@ -78,8 +78,9 @@ environment via ```yarn start```.
 You should be able to inspect your backend trying:
 
 ```shell
-curl 'http://localhost/v2/riders/?_sk=0&_l=2' | jq
+curl 'http://localhost:8080/v2/riders/?_sk=0&_l=2' | jq
 ```
+⚠️ If you changed the default port, remember to change it too in the url 
 
 Be sure you've installed `jq` for json pretty print. Otherwise visit the same link on the browser.
 
@@ -133,7 +134,7 @@ let's then add a file named `riders.json` in `./mocks` with a basic layout
 }
 ```
 
-After the `mock-server` refreshes you might browse http://localhost which will redirect to 
+After the `mock-server` refreshes, you might browse http://localhost:8080 which will redirect to 
 the first available plugin (and the only one) and render a blank page
 
 ![blank page](../img/first-plugin.png)
@@ -164,7 +165,7 @@ backend on `/v2/riders`. The `back-kit` provides a client which
 matches that interface.
 
 You could checkout the [`bk-crud-client` documentation](https://docs.mia-platform.eu/docs/business_suite/backoffice/Components/clients#bk-crud-client). Hence we could add that component by editing
-the `orders-list.json` config
+the `riders.json` config
 
 ```json
 // micro-lc/riders.json
@@ -192,8 +193,7 @@ the `orders-list.json` config
 
 Since `bk-crud-client` does not render anything, the web page should not
 change at all (beside the actual DOM tree), but after a default debounce
-time an http GET request must be performed (refresh your browser to
-check it out).
+time an http GET request must be performed.
 
 👉 the `url` parameter informs the `element-composer` to fetch a
 JS ES module library from the given endpoint. This property must be
@@ -204,10 +204,9 @@ webcomponents needed for this tutorial, hence it should be
 included once, typically on the first component is rendered (but that's
 not mandatory).
 
-Inspecting the browser network you'll find an extra XHR/fetch call
-pointing towards `http://localhost/v2/riders/?_sk=0&_l=25` 
+Inspect the browser network (in "Network" tab) and refresh the page: you'll find an extra XHR/fetch call
+pointing towards `http://localhost:8080/v2/riders/?_sk=0&_l=25` 
 which retrieved data.
-
 Then the client pipes data through the `element-composer`
 communication interface, the `EventBus`, which is pub/subbed by
 other components in the page.
@@ -244,7 +243,7 @@ Let's add a table using the [`bk-table` component](https://docs.mia-platform.eu/
 }
 ```
 
-Without properties the table if faulty since:
+Without properties the table is faulty since:
 
 - its primary color is not inherited/computed from the rest of the page
 - it knows there are 25 items but it doesn't know how to render them
@@ -279,12 +278,11 @@ Let's describe the data then:
 }
 ```
 
-and let's add it to the `orders-list.json` plugin within a `$ref`
-key which can be referenced from various part of the json config
+and let's add it to the `riders.json` plugin table within a `$ref`
+key which can be referenced from various part of the json config:
 
 ```json
 // micro-lc/riders.json
-
 
 {
   "$ref": {
@@ -299,18 +297,51 @@ key which can be referenced from various part of the json config
       {
         "type": "element",
         "tag": "bk-table",
+        // 👇 adding here
         "properties": {
           "dataSchema": {
             "$ref": "dataSchema"
           }
         }
+        // 👆 up to here
       }
     ]
   }
 }
 ```
 
-and also to the `bk-crud-client`.
+and also to the `bk-crud-client`:
+
+```json
+// micro-lc/riders.json
+
+{
+  "$ref": {
+    "dataSchema": {
+      ...
+    }
+  },
+  "content": {
+    ...
+    "content": [
+      ...
+      {
+        "type": "element",
+        "tag": "bk-crud-client",
+        "url": "/back-kit/{{BACK_KIT_VERSION}}/bk-web-components.esm.js",
+        "properties": {
+          "basePath": "/v2/riders",
+          // 👇 adding here
+          "dataSchema": {
+            "$ref": "dataSchema"
+          }
+          // 👆 up to here
+        }
+      },
+    ]
+  }
+}
+```
 
 Now the table knows what we would like to show (we excluded for
 instance the `createdAt` field) and how to render a type-dependent
@@ -319,8 +350,7 @@ visualization.
 #### Theme
 
 `micro-lc` provides a customizable set of css variables. One is the
-`--microlc-primary-color` which can be retrieved on your browser 
-using the following REPL line
+`--microlc-primary-color` which can be retrieved on your browser console using the following REPL line
 
 ```javascript
 window
@@ -328,9 +358,10 @@ window
   .getPropertyValue('--microlc-primary-color')
 ```
 
-which should return an `hex` color like `#fa8b3e`. Since
-each `back-kit` component is encapsulated in Shadow DOM with 
-`mode` set to `open` it is possible to modify inner style via 
+which should return an `hex` color like `#fa8b3e`.
+
+Since each `back-kit` component is encapsulated in Shadow DOM with 
+`mode` set to `open`, it is possible to modify inner style via 
 JS procedures only.
 
 🤡 Might be tricky but ensure there will be no css leaking.
@@ -341,7 +372,6 @@ global style, hence update your config as follows:
 
 ```json
 // micro-lc/riders.json
-
 
 {
   "$ref": {
@@ -374,23 +404,26 @@ Let's design some page layout
 
 {
   "$ref": {...},
-  "content": [
-    {
-      /* bk-microlc-theme-manager TAG */
-    },
-    {
-      /* HEADER */
-    },
-    {
-      /* MAIN */
-    },
-    {
-      /* FOOTER */
-    },
-    {
-      /* other clients/non-rendering components */
-    }
-  ]
+  "content": {
+    ...
+    "content": [
+      {
+        /* bk-microlc-theme-manager TAG */
+      },
+      {
+        /* HEADER */
+      },
+      {
+        /* MAIN */
+      },
+      {
+        /* FOOTER */
+      },
+      {
+        /* other clients/non-rendering components */
+      }
+    ]
+  }
 }
 ```
 
@@ -570,6 +603,45 @@ we have props:
 
 Notice that we told the button to emit an `event` and in `actionConfig`
 we specified the `label` and the `payload` of such event.
+
+##### BK-MICROLC-THEME-MANAGER
+In this section, add the theme object created before:
+
+```json
+{
+  {
+    "type": "element",
+    "tag": "bk-microlc-theme-manager"
+  },
+  {
+    // header
+  },
+  ...
+}
+```
+
+#### OTHER CLIENTS/NOT RENDERING COMPONENTS
+Here, add the object regarding the crud-client:
+
+```json
+{
+  ...
+  {
+    // footer
+  },
+  {
+    "type": "element",
+    "tag": "bk-crud-client",
+    "url": "/back-kit/{{BACK_KIT_VERSION}}/bk-web-components.esm.js",
+    "properties": {
+      "basePath": "/v2/riders",
+      "dataSchema": {
+        "$ref": "dataSchema"
+      }
+    }
+  },
+}
+```
 
 ### Play around
 
