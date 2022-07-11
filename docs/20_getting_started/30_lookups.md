@@ -35,15 +35,14 @@ const cities = new Cities(0, mockCities, true)
 module.exports = cities
 ```
 
-and we could check everything went ok by inspecting
+and check that everything went ok by inspecting
 
 ```shell
-curl "http://localhost/v2/cities?_l=2&_sk=0" | jq
-curl "http://localhost/v2/cities/count" | jq
+curl "http://localhost:8080/v2/cities?_l=2&_sk=0" | jq
+curl "http://localhost:8080/v2/cities/count" | jq
 ```
 
-Now let's create a CRUD for `customers` again via `yarn mgmt` which can be named 
-`customers`.
+Now let's create a CRUD for `customers` again via `yarn mgmt` which can be named `customers`.
 
 Customers will have:
 
@@ -83,10 +82,12 @@ const mockCustomers = (quantity) =>
       }
     })
 
-// continues here with exports ...
+const customers = new Customers(1000, mockCustomers, true)
+
+module.exports = customers
 ```
 
-hence, `cityOfBirth` must be a `lookup` hence we import the `cities` CRUD
+`cityOfBirth` must be a `lookup` hence we import the `cities` CRUD
 
 ```javascript
 // mocks/cruds/customers.js
@@ -105,13 +106,13 @@ return {
 }
 ```
 
-Let's than take a look at the output 
+Let's than take a look at the output with the command:
 
 ```shell
-curl "http://localhost/v2/customers?_l=1&_sk=0" | jq
+curl "http://localhost:8080/v2/customers?_l=1&_sk=0" | jq
 ```
 
-and we get something like 
+we get something like:
 
 ```json
 [
@@ -274,17 +275,17 @@ Most of `riders` layout is similar with few changes
 }
 ```
 
-if you refresh `localhost` you will find a new plugin.
+if you refresh `localhost:8080` you will find a new plugin.
 
 Unfortunately, `cityOfBirth` lookup has not been resolved and we didn't even
 specified the nature of such `_id` to the plugin.
 
-For that we have another webcomponents called `bk-crud-lookup-client`. Let's update
-the `dataSchema` with 3 information
+For that, we have another web component called `bk-crud-lookup-client`. Let's update
+the `dataSchema` with 3 information:
 
-1. to which collection does `cityOfBirth` refer => `cities` which is the `lookupDataSource`
-2. which field of the `cities` collection we hold on `customers` => `_id` which is the `lookupValue`
-3. which fields we must recover from `cities` to resolve the lookup => `name` which enters an array called `lookupFields`
+1. to which collection does `cityOfBirth` refers => `cities`, which is the `lookupDataSource`
+2. which field of the `cities` collection we hold on `customers` => `_id`, which is the `lookupValue`
+3. which fields we must recover from `cities` to resolve the lookup => `name`, which enters an array called `lookupFields`
 
 and optionally (but we won't use it here) queries, dependencies and delimiters/templates to
 concatenate multiple `lookupFields`

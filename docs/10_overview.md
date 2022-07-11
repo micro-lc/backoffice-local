@@ -12,6 +12,8 @@ Using ```yarn start``` on your local machine:
 1. a `docker-compose` environment starts
 2. a `mock-server` runs
 
+⚠️ The local enviroment runs on port 8080. It is possible to change it from the `docker-compose.yml` at line 8.
+
 The `docker-compose` environment is described by its [config yaml](../docker-compose.yml) and provides
 
 1. a nginx reverse proxy configurable from its [nginx.conf](../reverse-proxy/conf/nginx.conf) file
