@@ -26,6 +26,8 @@ See [Docs](docs/10_overview.md)
 yarn start
 ```
 
+then browse to http://localhost:8080
+
 ## Getting Started
 
 Follow the [tutorial](docs/20_getting_started)
