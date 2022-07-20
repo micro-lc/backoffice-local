@@ -26,6 +26,12 @@ See [Docs](docs/10_overview.md)
 yarn start
 ```
 
+and then browse to http://localhost:8080/
+
 ## Getting Started
 
 Follow the [tutorial](docs/20_getting_started)
+
+## Create a custom components library
+
+Follow the [tutorial](docs/30_create_custom_lib)
