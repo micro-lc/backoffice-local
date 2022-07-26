@@ -41,7 +41,7 @@ then let's move inside the newly created lib and let's make it apt for a workspa
 ```shell
 # from ./packages
 
-cd create-lib
+cd custom-lib
 rm -rf .yarn .yarnrc.yml yarn.lock
 
 cd ../../
@@ -50,6 +50,7 @@ cd ../../
 and we're back to root dir, please check that everything went ok by running
 
 ```shell
+yarn install
 yarn workspace custom-lib test
 ```
 
