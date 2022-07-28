@@ -291,9 +291,9 @@ some backend performance architectural reasoning (indexing, collation and such..
 The user might want to introduce its own filter to easily access data. Three
 components are devoted to this scope.
 
-- `bk-filters-manager` => fancy visualization tooltip that allows toggling filters
-- `bk-filter-drawer` => form to insert new filters
-- `bk-add-new-filter` => button to open filter insert context
+- `bk-filters-manager` → fancy visualization tooltip that allows toggling filters
+- `bk-filter-drawer` → form to insert new filters
+- `bk-add-new-filter` → button to open filter insert context
 
 The drawer can be added anywhere within the `bk-table` container
 

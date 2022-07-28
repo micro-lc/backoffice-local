@@ -1,7 +1,7 @@
 # First Plugin
 
 Let's create a backoffice plugin for micro-lc. The aim is to create a single micro-frontend
-which renders a table and thus visualize data incoming from a mongoDB collection.
+which renders a table and thus visualizes data incoming from a mongoDB collection.
 
 ## Backend: Create a CRUD collection
 
@@ -82,11 +82,11 @@ curl 'http://localhost:8080/v2/riders/?_sk=0&_l=2' | jq
 ```
 ⚠️ If you changed the default port, remember to change it too in the url 
 
-Be sure you've installed `jq` for json pretty print. Otherwise visit the same link on the browser.
+Be sure you've installed `jq` for json pretty print. Otherwise, visit the same link on the browser.
 
 ## Frontend: Configure the `riders` plugin
 
-Let's add a new plugin in [micro-lc configuration](../micro-lc/configuration.json). In `plugins` add 
+Let's add a new plugin in [micro-lc configuration](../../micro-lc/configuration.json). In `plugins` add 
 the following json code: 
 
 ```json
@@ -117,7 +117,7 @@ which instructs `micro-lc` to show a new item in the left-side menu which will h
 - plugins: `element-composer`
 - element-composer config: `riders.json`
 
-let's then add a file named `riders.json` in `./mocks` with a basic layout
+let's then add a file named `riders.json` in [micro-lc configuration folder](../../micro-lc) with a basic layout
 
 ```json
 // micro-lc/riders.json
@@ -164,7 +164,7 @@ As per the data model, we have a collection `riders` exposed by the
 backend on `/v2/riders`. The `back-kit` provides a client which
 matches that interface.
 
-You could checkout the [`bk-crud-client` documentation](https://docs.mia-platform.eu/docs/business_suite/backoffice/Components/clients#bk-crud-client). Hence we could add that component by editing
+You could check out the [`bk-crud-client` documentation](https://docs.mia-platform.eu/docs/business_suite/backoffice/Components/clients#bk-crud-client). Hence, we could add that component by editing
 the `riders.json` config
 
 ```json
@@ -193,14 +193,14 @@ the `riders.json` config
 
 Since `bk-crud-client` does not render anything, the web page should not
 change at all (beside the actual DOM tree), but after a default debounce
-time an http GET request must be performed.
+time a http GET request must be performed.
 
 👉 the `url` parameter informs the `element-composer` to fetch a
 JS ES module library from the given endpoint. This property must be
 at least once on a set of components it requires it. 
 
 👉 For instance `bk-web-components.esm.js` contains almost all the
-webcomponents needed for this tutorial, hence it should be 
+web components needed for this tutorial, hence it should be 
 included once, typically on the first component is rendered (but that's
 not mandatory).
 
@@ -246,7 +246,7 @@ Let's add a table using the [`bk-table` component](https://docs.mia-platform.eu/
 Without properties the table is faulty since:
 
 - its primary color is not inherited/computed from the rest of the page
-- it knows there are 25 items but it doesn't know how to render them
+- it knows there are 25 items, but it doesn't know how to render them
 - it's poorly styled within the page
 
 ### Enhance the page
@@ -394,7 +394,7 @@ global style, hence update your config as follows:
 
 #### Styling & Layout
 
-`back-kit` here is almost done and we must provide some style to the page.
+`back-kit` here is almost done, and we must provide some style to the page.
 To do that we can use some inline css.
 
 Let's design some page layout
@@ -531,9 +531,9 @@ to control
 
 - number of elements
 - state change
-- pagination, intial skip and limit, pagination options
+- pagination, initial skip and limit, pagination options
 
-⚠️ You'll probably notice that less than a 1000 elements are available.
+⚠️ You'll probably notice that less than 1000 elements are available.
 The CRUD interface defaults on `__STATE__ === PUBLIC` hence,
 since we created random data, only a part of them is available.
 
@@ -597,9 +597,9 @@ but we wanted to show a fully configurable button to begin with
 Focusing on the [`bk-button`](https://docs.mia-platform.eu/docs/business_suite/backoffice/Components/buttons#bk-button)
 we have props:
 
-- `content` => the inner text
-- `iconId` => either an [antd icon](https://ant.design/components/icon/) or a [fas/far free fontawesome icon](https://fontawesome.com/search?m=free&s=solid%2Cregular)
-- `clickConfig` => what the button does on click
+- `content` → the inner text
+- `iconId` → either an [antd icon](https://ant.design/components/icon/) or a [fas/far free fontawesome icon](https://fontawesome.com/search?m=free&s=solid%2Cregular)
+- `clickConfig` → what the button does on click
 
 Notice that we told the button to emit an `event` and in `actionConfig`
 we specified the `label` and the `payload` of such event.

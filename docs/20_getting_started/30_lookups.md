@@ -283,9 +283,9 @@ specified the nature of such `_id` to the plugin.
 For that, we have another web component called `bk-crud-lookup-client`. Let's update
 the `dataSchema` with 3 information:
 
-1. to which collection does `cityOfBirth` refers => `cities`, which is the `lookupDataSource`
-2. which field of the `cities` collection we hold on `customers` => `_id`, which is the `lookupValue`
-3. which fields we must recover from `cities` to resolve the lookup => `name`, which enters an array called `lookupFields`
+1. to which collection does `cityOfBirth` refers → `cities`, which is the `lookupDataSource`
+2. which field of the `cities` collection we hold on `customers` → `_id`, which is the `lookupValue`
+3. which fields we must recover from `cities` to resolve the lookup → `name`, which enters an array called `lookupFields`
 
 and optionally (but we won't use it here) queries, dependencies and delimiters/templates to
 concatenate multiple `lookupFields`
