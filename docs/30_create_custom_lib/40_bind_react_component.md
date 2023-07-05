@@ -27,8 +27,8 @@ let's add some files into `src/react-components`:
 |   index.ts
 ├───<strong>react-components</strong>
 |   |   index.ts
-|   └───<strong>CustomButton</strong>
-|       |   CustomButton.tsx
+|   └───<strong>ReactCustomButton</strong>
+|       |   ReactCustomButton.tsx
 |       |   index.ts
 └───<strong>web-components</strong>
 </pre>
@@ -38,7 +38,7 @@ and add a simple `Button` extension
 mui:
 
 ```typescript
-// src/react-components/CustomButton/CustomButton.tsx
+// src/react-components/ReactCustomButton/ReactCustomButton.tsx
 
 import React from 'react'
 import {Button, ButtonProps as MuiButtonProps} from '@mui/material'
@@ -47,7 +47,7 @@ export type ButtonProps = MuiButtonProps & {
   content?: string
 }
 
-export function CustomButton({content, ...props}: ButtonProps): JSX.Element {
+export function ReactCustomButton({content, ...props}: ButtonProps): JSX.Element {
   return <Button {...props}>{content}</Button>
 }
 ```
@@ -55,7 +55,7 @@ export function CustomButton({content, ...props}: ButtonProps): JSX.Element {
 antd:
 
 ```typescript
-// src/react-components/CustomButton/CustomButton.tsx
+// src/react-components/ReactCustomButton/ReactCustomButton.tsx
 
 import React from 'react'
 import Button, {ButtonProps as AntdButtonProps} from 'antd/es/button'
@@ -64,7 +64,7 @@ export type ButtonProps = AntdButtonProps & {
   content?: string
 }
 
-export function CustomButton({content, ...props}: ButtonProps): JSX.Element {
+export function ReactCustomButton({content, ...props}: ButtonProps): JSX.Element {
   return <Button {...props}>{content}</Button>
 }
 ```
@@ -72,10 +72,10 @@ export function CustomButton({content, ...props}: ButtonProps): JSX.Element {
 and ensure it is exported
 
 ```typescript
-// src/react-components/CustomButton/index.ts
+// src/react-components/ReactCustomButton/index.ts
 // src/react-components/index.ts
 
-export * from './CustomButton'
+export * from './ReactCustomButton'
 ```
 
 The webcomponent wrapper can be fully re-written as
@@ -99,7 +99,7 @@ export class CustomButton extends BkComponent<ButtonProps> {
     )
   }
 
-  protected render(): unknown {
+  protected render(): any {
     return html`<div id="container"></div>`
   }
 }
